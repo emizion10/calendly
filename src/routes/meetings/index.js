@@ -16,7 +16,7 @@ router
   );
 
 router
-  .route("/:hostId")
+  .route("/:id")
   .get(handleRequest(meetingsController.get))
 
 module.exports = router;

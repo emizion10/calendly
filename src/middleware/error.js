@@ -18,15 +18,15 @@ const convertError = (err, req, res, next) => {
   let convertedError = err;
   if (err.error && err.error.name === "ValidationError") {
     convertedError = new APIError({
-      code: "VAL-001",
+      code: "VALIDATION ERROR",
       message: err.error.message,
       status : httpStatus.StatusCodes.BAD_REQUEST,
     });
   } else if (!(err instanceof APIError)) {
     let msg, status, code;
-    if (err.message === "Invalid Query") {
+    if (err.message === "Conflict Error") {
       msg = err.message;
-      status = httpStatus.StatusCodes.BAD_REQUEST;
+      status = httpStatus.StatusCodes.CONFLICT;
       code = 400;
     } else {
       msg = "Something Unexpected happened!";

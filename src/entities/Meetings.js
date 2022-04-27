@@ -5,15 +5,10 @@ class Meetings extends Model {}
 
 Meetings.init(
   {
-    hostId: DataTypes.STRING,
-    participantId: DataTypes.STRING,
+    hostId: DataTypes.UUID,
+    participantId: DataTypes.UUID,
     startDate: DataTypes.DATE,
     endDate: DataTypes.DATE,
-    isDeleted: {
-      type: DataTypes.BOOLEAN,
-      field: "is_deleted",
-      defaultValue: false,
-    },
   },
   {
     sequelize,

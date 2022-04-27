@@ -4,6 +4,6 @@ exports.scheduleMeeting = async (props) => {
   return meetingsRepository.scheduleMeeting(props);
 };
 
-exports.getMeetingsByHost = async (hostId) => {
-  return meetingsRepository.getMeetingsByHost(hostId);
+exports.getMeetingsById = async (id) => {
+  return meetingsRepository.getMeetingsById(id);
 };
