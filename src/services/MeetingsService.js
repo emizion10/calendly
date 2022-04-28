@@ -1,7 +1,7 @@
 const meetingsRepository = require("../repositories/MeetingsRepository");
 
-exports.scheduleMeeting = async (props) => {
-  return meetingsRepository.scheduleMeeting(props);
+exports.scheduleMeeting = async (meetingsInputData) => {
+  return meetingsRepository.scheduleMeeting(meetingsInputData);
 };
 
 exports.getMeetingsById = async (id) => {
