@@ -4,6 +4,6 @@ exports.scheduleMeeting = async (meetingsInputData) => {
   return meetingsRepository.scheduleMeeting(meetingsInputData);
 };
 
-exports.getMeetingsById = async (id) => {
-  return meetingsRepository.getMeetingsById(id);
+exports.getMeetingsByUser = async (id) => {
+  return meetingsRepository.getMeetingsByUser(id);
 };

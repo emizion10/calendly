@@ -24,7 +24,7 @@ describe("Meetings Controller", function () {
       const mock = sinon.mock(res);
       mock.expects("json").once().withExactArgs([stubValue]);
       const stub = sinon
-        .stub(meetingsService, "getMeetingsById")
+        .stub(meetingsService, "getMeetingsByUser")
         .returns([stubValue]);
       await meetingsController.get(req, res);
       expect(stub.calledOnce).to.be.true;
@@ -33,7 +33,7 @@ describe("Meetings Controller", function () {
     it("should return empty array when there is no meeting scheduled", async function () {
       const mock = sinon.mock(res);
       mock.expects("json").once().withExactArgs([]);
-      const stub = sinon.stub(meetingsService, "getMeetingsById").returns([]);
+      const stub = sinon.stub(meetingsService, "getMeetingsByUser").returns([]);
       await meetingsController.get(req, res);
       expect(stub.calledOnce).to.be.true;
       mock.verify();

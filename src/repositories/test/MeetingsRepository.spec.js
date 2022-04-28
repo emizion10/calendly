@@ -14,25 +14,11 @@ describe("Meetings Repository", function () {
     startDate: "2022-05-17T01:38:12.000Z",
     endDate: "2022-05-17T02:38:12.000Z",
   };
-  describe("scheduleMeeting", function () {
-    it("should add a new meeting to the db", async function () {
-      const stub = sinon.stub(Meetings, "create").returns(stubValue);
-      const meeting = await meetingsRepository.scheduleMeeting({
-        hostId: stubValue.hostId,
-        participantId: stubValue.participantId,
-        startDate: stubValue.startDate,
-        endDate: stubValue.endDate,
-      });
-      expect(stub.calledOnce).to.be.true;
-      expect(meeting.hostId).to.equal(stubValue.hostId);
-      expect(meeting.participantId).to.equal(stubValue.participantId);
-    });
-  });
 
-  describe("getMeetingsById", function () {
+  describe("getMeetingsByUser", function () {
     it("should get meetings of a user by id", async function () {
       const stub = sinon.stub(Meetings, "findAll").returns([stubValue]);
-      const meetings = await meetingsRepository.getMeetingsById({
+      const meetings = await meetingsRepository.getMeetingsByUser({
         id: stubValue.hostId,
       });
 

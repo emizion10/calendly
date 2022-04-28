@@ -3,6 +3,7 @@ const sinon = require("sinon");
 const expect = chai.expect;
 const MeetingsRepository = require("../../repositories/MeetingsRepository");
 const meetingsService = require("../MeetingsService");
+
 describe("MeetingsService", function () {
   beforeEach(() => {
     sinon.restore();
@@ -13,30 +14,13 @@ describe("MeetingsService", function () {
     startDate: "2022-05-17T01:38:12.000Z",
     endDate: "2022-05-17T02:38:12.000Z",
   };
-  describe("scheduleMeeting", function () {
-    it("should schedule a new meeting", async function () {
-      const stub = sinon
-        .stub(MeetingsRepository, "scheduleMeeting")
-        .returns(stubValue);
 
-      const meeting = await meetingsService.scheduleMeeting({
-        hostId: stubValue.hostId,
-        participantId: stubValue.participantId,
-        startDate: stubValue.startDate,
-        endDate: stubValue.endDate,
-      });
-      expect(stub.calledOnce).to.be.true;
-      expect(meeting.hostId).to.equal(stubValue.hostId);
-      expect(meeting.participantId).to.equal(stubValue.participantId);
-    });
-  });
-
-  describe("getMeetingsById", function () {
+  describe("getMeetingsByUser", function () {
     it("should get meetings of a user by id", async function () {
       const stub = sinon
-        .stub(MeetingsRepository, "getMeetingsById")
+        .stub(MeetingsRepository, "getMeetingsByUser")
         .returns([stubValue]);
-      const meetings = await meetingsService.getMeetingsById({
+      const meetings = await meetingsService.getMeetingsByUser({
         id: stubValue.hostId,
       });
 

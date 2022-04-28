@@ -4,7 +4,10 @@ const validator = require("express-joi-validation").createValidator({
   passError: true,
 });
 const { handleRequest } = require("../../helpers/requestHandler");
-const { scheduleMeeting } = require("../../validations/meetings");
+const {
+  scheduleMeeting,
+  getMeetingsByUser,
+} = require("../../validations/meetings");
 
 const router = express.Router();
 
@@ -17,6 +20,9 @@ router
 
 router
   .route("/:id")
-  .get(handleRequest(meetingsController.get))
+  .get(
+    validator.params(getMeetingsByUser),
+    handleRequest(meetingsController.get)
+  );
 
 module.exports = router;

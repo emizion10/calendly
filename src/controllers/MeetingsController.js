@@ -11,6 +11,6 @@ exports.create = async (req, res, next) => {
 };
 
 exports.get = async (req, res, next) => {
-  const meetings = await meetingService.getMeetingsById(req.params.id);
+  const meetings = await meetingService.getMeetingsByUser(req.params.id);
   res.json(meetings);
 };

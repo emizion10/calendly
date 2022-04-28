@@ -48,7 +48,7 @@ module.exports.scheduleMeeting = async ({
   });
 };
 
-module.exports.getMeetingsById = async (id) => {
+module.exports.getMeetingsByUser = async (id) => {
   return Meetings.findAll({
     where: {
       [Op.or]: { hostId: id, participantId: id },
