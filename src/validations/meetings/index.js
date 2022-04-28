@@ -1,4 +1,5 @@
 const Joi = require("joi");
+// Validation for schedule meeting
 module.exports.scheduleMeeting = Joi.object({
   hostId: Joi.string().guid().required(),
   participantId: Joi.string().guid().required(),
@@ -6,6 +7,7 @@ module.exports.scheduleMeeting = Joi.object({
   endDate: Joi.date().min(Joi.ref("startDate")).required(),
 });
 
+// Validation for get all meetings
 module.exports.getMeetingsByUser = Joi.object({
   id: Joi.string().guid().required(),
 });
